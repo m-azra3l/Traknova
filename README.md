@@ -92,6 +92,10 @@ Or use `TestExplorer` in `Visual Studio`.
 
 ---
 
+## License
+
+This project is licensed under the MIT License. See `LICENSE` for details.
+
 ## Summary
 
 When starting a new project:
@@ -101,9 +105,3 @@ When starting a new project:
 4. Run the Web API and navigate to `/docs` or `/documentations`.
 5. Run tests to validate repository ingestion logic.
 ```
-
----
-
-## License
-
-This project is licensed under the MIT License. See `LICENSE` for details.
