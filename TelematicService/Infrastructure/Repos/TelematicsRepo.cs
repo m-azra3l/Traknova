@@ -2,7 +2,7 @@
 
 namespace TelematicService.Infrastructure.Repos
 {
-    public class TelematicsRepo : ITelematicsRepo
+    public class TelematicsRepo //: ITelematicsRepo
     {
     }
 }
