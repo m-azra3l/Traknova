@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
     <PropertyGroup>
         <TargetFramework>net9.0</TargetFramework>
         <Nullable>enable</Nullable>
@@ -7,38 +7,25 @@
         <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     </PropertyGroup>
     <ItemGroup>
-        <PackageReference Include="DotNetEnv"
-                          Version="3.1.1" />
-        <PackageReference Include="Microsoft.AspNetCore.OpenApi"
-                          Version="9.0.4" />
-        <PackageReference Include="Microsoft.EntityFrameworkCore"
-                          Version="9.0.4" />
-        <PackageReference Include="Microsoft.EntityFrameworkCore.Design"
-                          Version="9.0.4">
+        <PackageReference Include="DotNetEnv" Version="3.1.1" />
+        <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.4" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.4" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.4">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
-        <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer"
-                          Version="9.0.4" />
-        <PackageReference Include="Microsoft.EntityFrameworkCore.Tools"
-                          Version="9.0.4">
+        <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="9.0.4" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="9.0.4">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
-        <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets"
-                          Version="1.21.0" />
-        <PackageReference Include="Scalar.AspNetCore"
-                          Version="2.7.2" />
-        <PackageReference Include="Serilog"
-                          Version="4.3.1" />
-        <PackageReference Include="Serilog.Sinks.Console"
-                          Version="6.1.1" />
-        <PackageReference Include="Serilog.Sinks.File"
-                          Version="7.0.0" />
-        <PackageReference Include="Swashbuckle.AspNetCore"
-                          Version="9.0.4" />
-        <PackageReference Include="Ulid"
-                          Version="1.4.1" />
+        <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.21.0" />
+        <PackageReference Include="Scalar.AspNetCore" Version="2.7.2" />
+        <PackageReference Include="Serilog" Version="4.3.1" />
+        <PackageReference Include="Serilog.Sinks.Console" Version="6.1.1" />
+        <PackageReference Include="Serilog.Sinks.File" Version="7.0.0" />
+        <PackageReference Include="Swashbuckle.AspNetCore" Version="9.0.4" />
+        <PackageReference Include="Ulid" Version="1.4.1" />
     </ItemGroup>
     <PropertyGroup>
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
