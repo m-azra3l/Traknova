@@ -1,0 +1,15 @@
+version: '3.9'
+services:
+  db:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    environment:
+      - MSSQL_SA_USER=sa
+      - MSSQL_SA_PASSWORD=P@ssw0rd
+      - ACCEPT_EULA=Y
+    container_name: TraknovaDb
+    hostname: TraknovaDb
+    restart: unless-stopped
+    ports:
+      - "1433:1433"
+    cap_add:
+      - SYS_PTRACE
