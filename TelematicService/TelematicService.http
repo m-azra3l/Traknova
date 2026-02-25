@@ -1,6 +1,1 @@
 @TelematicService_HostAddress = http://localhost:5242
-
-GET {{TelematicService_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###
