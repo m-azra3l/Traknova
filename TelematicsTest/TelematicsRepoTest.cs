@@ -2,6 +2,7 @@
 using TelematicService.Application.Dtos;
 using TelematicService.Infrastructure.Contexts;
 using TelematicService.Infrastructure.Repos;
+using static TelematicService.Application.MapServices.PayloadDeserializer;
 
 namespace TelematicsTest
 {
@@ -65,7 +66,34 @@ namespace TelematicsTest
         [Fact(DisplayName = "Persist multiple records from payload file")]
         public async Task IngestDataListAsync_PersistsMultipleRecordsFromPayloadFile()
         {
+            // Arrange: set up in-memory DB and repo
+            var dbContext = GetInMemoryDbContext();
+            var repo = new TelematicsRepo(dbContext);
 
+            // Load payload.json from output directory
+            var json = await File.ReadAllTextAsync("payload.json");
+
+            // Deserialize into DTOs
+            var dtos = TelematicsDeserializer.Deserialize(json);
+
+            // Extract vehicle IDs for assertions
+            int vehIdWithCrash = dtos.Where(v => v.CrashDetection != null).Select(v => v.VehicleId).FirstOrDefault();
+            int vehIdWithOverspeed = dtos.Where(v => v.OverSpeedingAlert).Select(v => v.VehicleId).FirstOrDefault();
+
+            // Act: ingest list of DTOs
+            await repo.IngestDataListAsync(dtos);
+
+            // Assert: verify multiple records persisted
+            var saved = await dbContext.Telematics.Include(t => t.CrashDetections).ToListAsync();
+            Assert.NotEmpty(saved);
+
+            // Verify crash detection record
+            var first = saved.First(t => t.VehicleId == vehIdWithCrash);
+            Assert.Single(first.CrashDetections);
+
+            // Verify overspeeding alert record
+            var second = saved.First(t => t.VehicleId == vehIdWithOverspeed);
+            Assert.True(second.OverSpeedingAlert);
         }
     }
 }
