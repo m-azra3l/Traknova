@@ -4,7 +4,9 @@ using Microsoft.OpenApi.Models;
 using Scalar.AspNetCore;
 using Serilog;
 using System.Reflection;
+using TelematicService.Domain.Interfaces;
 using TelematicService.Infrastructure.Contexts;
+using TelematicService.Infrastructure.Repos;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -51,6 +53,11 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 //.EnableSensitiveDataLogging().LogTo(Console.WriteLine, LogLevel.Error)
 //.EnableDetailedErrors().LogTo(message => Debug.WriteLine(message), LogLevel.Information)
 , ServiceLifetime.Scoped);
+
+
+// Register repository implementation with sccoped lifetime
+// Prefer using Unit of Work to encompass multiple repositories if following repository pattern
+builder.Services.AddScoped<ITelematicsRepo, TelematicsRepo>();
 
 builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
